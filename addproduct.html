@@ -1,0 +1,90 @@
+{% extends 'scrap_layout.html'%}
+
+{% block body%}
+<div  class="container">
+    <div class= "col-md-2"></div>
+    <div class = "col-md-8">
+        <h2 class = "text-center"> Add a Product</h2>
+        <form action="" method="post" enctype="multipart/form-data" novalidate>
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+
+
+            <div class=" mb-3">
+                {% if error_message != ""  %}
+                    <p class="color-red fs-4">{{ error_message }}</p>
+                {% endif %}
+            </div>
+
+
+            <div class=" mb-3">
+                {% if form.name.errors  %}
+                    {{ form.name(class="form-control border border-1 border-dark") }}
+                    <div>
+                        {% for errors in form.name.errors %}
+                            <span class="f-open-sans fs-6 color-white">{{ errors }}</span> 
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.name(class="form-control border border-1 border-dark")}}
+                {% endif %}
+            </div>
+
+            <div class=" mb-3">
+                {% if form.category.errors  %}
+                    {{ form.category(class="form-control border border-1 border-dark") }}
+                    <div>
+                        {% for errors in form.category.errors %}
+                            <span class="f-open-sans fs-6 color-white">{{ errors }}</span> 
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.category(class="form-control border border-1 border-dark")}}
+                {% endif %}
+            </div>
+
+            <div class=" mb-3">
+                {% if form.price.errors  %}
+                    {{ form.price(class="form-control border border-1 border-dark") }}
+                    <div>
+                        {% for errors in form.price.errors %}
+                            <span class="f-open-sans fs-6 color-white">{{ errors }}</span> 
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.price(class="form-control border border-1 border-dark")}}
+                {% endif %}
+            </div>
+
+            <div class=" mb-3">
+                {% if form.description.errors  %}
+                    {{ form.description(class="form-control border border-1 border-dark") }}
+                    <div>
+                        {% for errors in form.description.errors %}
+                            <span class="f-open-sans fs-6 color-white">{{ errors }}</span> 
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.description(class="form-control border border-1 border-dark")}}
+                {% endif %}
+            </div>
+
+            <div class=" mb-3">
+                {% if form.image.errors  %}
+                    {{ form.image(class="form-control border border-1 border-dark") }}
+                    <div>
+                        {% for errors in form.image.errors %}
+                            <span class="f-open-sans fs-6 color-white">{{ errors }}</span> 
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.image(class="form-control border border-1 border-dark")}}
+                {% endif %}
+            </div>
+            
+            <div>
+                {{ form.submit(class="btnSubmit")}}
+            </div>
+        </form>
+
+{% endblock body%}

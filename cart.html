@@ -1,0 +1,32 @@
+{% extends 'scrap_layout.html' %}
+{% from "macro.html" import product_card_cart with context%}
+{% block body %}
+    
+    <div class="container">
+        
+        <div class="row">
+            <p class="fs-1 fw-bolder">CART</p>
+        </div>
+        
+        <div class="container">
+            
+            <div class="row row-cols-5 g-3">
+                {% for product in product_list %}
+                    
+                    <div class="col">
+                        {{ product_card_cart(product) }}
+                    </div>
+                    
+                {% endfor %}    
+            </div>
+            
+        </div>
+
+        <div class="mt-5">
+            <a href="{{ url_for('detail') }}" class="btn btn-dark fs-4">Proceed</a>
+        </div>
+        
+        
+    </div>
+    
+{% endblock %}

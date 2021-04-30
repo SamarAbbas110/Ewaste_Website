@@ -1,0 +1,76 @@
+{% macro product_card(product) %}
+    <div class="card h-100">
+        <div>
+            <img src="../static/images/{{product.image}}" alt="" class="product-size w-100" style=" object-fit: cover;">
+            <div class="m-2">
+                    <p class="m-0 p-1 fw-bolder">{{product.product_name}}</p>
+                    <p class="m-0 p-1 fw-bolder text-danger">{{product.price}}</p>
+                    <a href="#" class="btn btn-primary m-0 p-2">Add to Cart</a>   
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro product_new_card(product) %}
+<div class="col-xs-3 col-sm-3 col-md-3">
+    <div class="card align-items-center" style="width: 18rem;">
+        <img src='../static/images/{{product.image}}' class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title" id="{{product.product_id}}">{{product.product_name}}</h5>
+            <p class="card-text">{{product.desc}}...</p>
+            <span id="{{product.product_id}}" class="divpr">
+                <a id="{{product.product_id}}" class="btn btn-primary cart" href="{{ url_for('add_to_cart') }}?product_id={{product.product_id}}">Add To Cart</a>
+            </span>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro product_card_cart(product) %}
+    <div class="card h-100" >
+        <img src='../static/images/{{product.image}}' class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title" id="{{product.product_id}}">{{product.product_name}}</h5>
+            <p class="card-text">{{product.desc}}...</p>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro product_list(product) %}
+<div class="card h-100" style="cursor: pointer;" >
+    <div class="row"> 
+        <div class="col-auto p-2">
+            <img src="../static/images/product/{{product.image}}" class="product_medium_image">
+        </div>
+        <div class="col">
+            <div class="card-body p-0 pt-2 px-2">
+                <div class="text-start">
+                        <p class="product-title col-10 fs-3 "  style="white-space:nowrap; overflow: hidden;text-overflow: ellipsis;">{{ product.product_name }}</p>
+                </div>
+                <div class="">
+                    <p class="product-price fs-3 fw-bolder">Rs.{{ product.price }}</p>
+                </div>                                            
+            </div>
+        </div>
+        <div class="col-auto">
+            <div>
+                <span class="fs-4 fw-bold">Select Quantity</span>
+                <select name="{{product.product_id}}" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    
+                    {% for i in range(1,product.quantity) %}
+                        {% if loop.index < 6 %}
+                        <option value="{{i}}"">{{i}}</option>
+                        {% endif %}  
+                    {% endfor %}                
+                  </select>
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+
+
+
+
+

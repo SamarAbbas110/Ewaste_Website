@@ -1,0 +1,26 @@
+{% extends 'scrap_layout.html' %}
+{% from 'macro.html' import product_list with context%}
+
+{% block content %}
+</script>
+    <div class="">
+        <form method="POST">
+        <div class="row row-cols-1 g-3">
+            
+            {% for product in product_list %}
+                <div class="container">
+                    {{ order_list(product, images[product.product_id] )}}
+                </div>
+            {% endfor %}
+        
+        </div>
+    
+       
+    <div class="m-3">
+        <button type="submit" class="proceed-btn btn btn-lg f-oswald fs-2"> Proceed </button>
+    </div>
+</form>
+</div>
+
+    
+{% endblock content %}

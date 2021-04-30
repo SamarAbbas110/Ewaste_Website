@@ -1,0 +1,63 @@
+{% extends 'scrap_layout.html' %}
+
+{% block body %}
+        <div class="container login-container mt-5">
+            <div class="login-form w-50 mx-auto">
+                <h3>REGISTRATION</h3>
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                    <div class=" mb-3">
+                        {% if form.first_name.errors  %}
+                            {{ form.first_name(class="form-control border border-1 border-dark") }}
+                            <div>
+                                {% for errors in form.first_name.errors %}
+                                    <span class="f-open-sans fs-6 color-white">{{ errors }}</span> 
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.first_name(class="form-control border border-1 border-dark")}}
+                        {% endif %}
+                    </div>
+                    <div class=" mb-3">
+                        {% if form.last_name.errors  %}
+                            {{ form.last_name(class="form-control border border-1 border-dark") }}
+                            <div>
+                                {% for errors in form.last_name.errors %}
+                                    <span class="f-open-sans fs-6 color-white">{{ errors }}</span> 
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.last_name(class="form-control border border-1 border-dark")}}
+                        {% endif %}
+                    </div>
+                    <div class=" mb-3">
+                        {% if form.email.errors  %}
+                            {{ form.email(class="form-control border border-1 border-dark") }}
+                            <div>
+                                {% for errors in form.email.errors %}
+                                    <span class="f-open-sans fs-6 color-white">{{ errors }}</span> 
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email(class="form-control border border-1 border-dark")}}
+                        {% endif %}
+                    </div>
+                    <div class=" mb-3">
+                        {% if form.password.errors  %}
+                            {{ form.password(class="form-control border border-1 border-dark") }}
+                            <div>
+                                {% for errors in form.password.errors %}
+                                    <span class="f-open-sans fs-6 color-white">{{ errors }}</span> 
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.password(class="form-control border border-1 border-dark")}}
+                        {% endif %}
+                    </div>
+                    <div>
+                        {{ form.submit(class="btnSubmit")}}
+                    </div>
+                </form>
+            </div>
+        </div>
+{% endblock %}

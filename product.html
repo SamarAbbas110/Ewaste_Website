@@ -1,0 +1,105 @@
+{% extends 'scrap_layout.html'%}
+{% from "macro.html" import product_new_card with context%}
+
+{% block css %}
+.col-md-3
+{
+display: inline-block;
+margin-left:-4px;
+}
+.carousel-indicators .active {
+background-color: blue;
+}
+.col-md-3 img{
+width: 215px;
+height: 205px;
+}
+body .carousel-indicator li{
+background-color: blue;
+}
+body .carousel-indicators{
+bottom: 0;
+}
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon{
+background-color: blue;
+}
+.carousel-control-prev,
+.carousel-control-next{
+top: auto;
+bottom: auto;
+padding-top: 222px;
+}
+body .no-padding{
+padding-left: 0,
+padding-right: 0;
+}
+{% endblock %}
+
+{% block body%}
+    
+    {% for category, products in data.items() %}
+        
+            <div>
+                <p class="fs-2">{{category}}</p>
+            </div>
+
+
+
+            <div id="{{category}}" class="carousel carousel-dark slide" data-bs-ride="carousel">
+
+                
+
+                <div class="container carousel-inner no-padding">
+                    <div class="carousel-item active">
+                        <div class="row">    <!-- Row start --> 
+                        {% for product in products %}
+                            {{product_new_card(product)}}
+                            {% if loop.index %4 == 0 and loop.index > 0 and not loop.last %}
+                                </div> <!-- Row end -->
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+                            {% endif %}
+                        {% endfor %}
+                                </div>
+                    </div>
+                
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#{{category}}" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#{{category}}" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+                </button>   
+            </div>
+        </div>
+    {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+            
+
+{% endblock body %}
+
+<!-- <div class="row row-cols-5 g-3">
+    {% for product in products %}
+    <div>
+        {{ product_card(product)}}
+    </div>            
+{% endfor %}
+</div> -->

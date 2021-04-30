@@ -1,0 +1,53 @@
+{% extends 'scrap_layout.html' %}
+
+{% block body %}
+        <div class="container login-container mt-5">
+            <div class="login-form w-50 mx-auto">
+                <h3>Login</h3>
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                    <div class=" mb-3">
+                        {% if error_message != ""  %}
+                            <p class="color-red fs-4">{{ error_message }}</p>
+                        {% endif %}
+                    </div>
+                    <div class=" mb-3">
+                        {% if form.email.errors  %}
+                            {{ form.email(class="form-control border border-1 border-dark") }}
+                            <div>
+                                {% for errors in form.email.errors %}
+                                    <span class="f-open-sans fs-6 color-white">{{ errors }}</span> 
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email(class="form-control border border-1 border-dark")}}
+                        {% endif %}
+                    </div>
+                    <div class=" mb-3">
+                        {% if form.password.errors  %}
+                            {{ form.password(class="form-control border border-1 border-dark") }}
+                            <div>
+                                {% for errors in form.password.errors %}
+                                    <span class="f-open-sans fs-6 color-white">{{ errors }}</span> 
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.password(class="form-control border border-1 border-dark")}}
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">  
+                        {{ form.remember_me(class="")}}
+                        <span class="color-white">Remember Me</span>
+                    </div>
+                    
+                    <div>
+                        {{ form.submit(class="btnSubmit")}}
+                    </div>
+
+                    <div class="form-group">
+                        <a href="#" class="ForgetPwd" value="Login">Forget Password?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+{% endblock %}

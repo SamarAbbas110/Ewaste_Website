@@ -1,0 +1,44 @@
+{% extends 'scrap_layout.html' %}
+{% block body %}
+    <div class="container">
+        <div>
+            <p class="fs-1 fw-bolder">Sell Request</p>
+        </div>
+        <div>
+            <p class="fs-3">{{session["user_name"]}}</p>
+            <p class="fs-3">{{session["user_email"]}}</p>
+            <p class="fs-3">{{session["Request"]["phone"]}}</p>
+            <p class="fs-3">{{session["Request"]["address"]}}</p>
+        </div>
+        <div>
+            <table class="table">
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Price</th>
+            </tr>
+                {% for product in product_list %}
+                    <tr>
+                    <td scope="row"> {{ loop.index }}</td>
+                    <td>{{ product.product_name }}</td>
+                    <td>{{ product.price }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colsapn="3">
+                        Total Price
+                    </td>
+                    <td>
+                        {{total_price}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <form action="{{ url_for('placerequest')}}" method="post">
+                <button type="submit" class="btn btn-dark fs-3">Place Request</button>
+            </form> 
+        </div> 
+
+    </div>
+{% endblock %}

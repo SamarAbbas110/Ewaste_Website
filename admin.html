@@ -1,0 +1,47 @@
+{% extends 'scrap_layout.html'%}
+
+{% block content%}
+{% include 'message.html %}
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">WebSiteName</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Page 1</a></li>
+        <li><a href="#">Page 2</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </nav>
+  </div>
+  <div class ="container">
+      <table class="tale table-se">
+          <thead>
+              <th>name</th>
+              <th>category</th>
+              <th>price</th>
+              <th>description</th>
+
+          </thead>
+          <tbody>
+              {% for product in products%}
+              <tr>
+                  <td>{{ loop.index}}</td>
+                  <td>{{product.name}}</td>
+                  <td>{{product.category</td>
+                  <td>{{product.price</td>
+                  <td>{{product.description</td>
+                  <td>img src='{{url_for("static" , filename='images/' + product.image)}}' width="50" height="40"</td> 
+              </tr>
+              {% endfor%}
+
+          </tbody>
+      </table>
+  </div>
+{% endblock content %}
